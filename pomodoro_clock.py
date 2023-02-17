@@ -7,43 +7,55 @@ CLEAR_AND_RETURN = "\033[H"
 print("-------------------------")
 print("Welcome The CLI-Pomodoro!")
 print("-------------------------")
-print("Please Choose A Length For Your Pomodoros:")
-print("")
-print("A. 25 Minutes")
-print("B. 40 Minutes")
-print("C. 50 Minutes")
-print("")
-user_pomodoro_length_input = input("Type A, B or C: ")
-print("-------------------------")
-print("Please Choose A Length For Your Breaks:")
-print("")
-print("A. 5 Minutes")
-print("B. 10 Minutes")
-print("C. 15 Minutes")
-print("")
-user_break_length_input = input("Type A, B or C: ")
 
 
-if user_pomodoro_length_input == "A":
-    user_pomodoro_length = 25 * 60
-elif user_pomodoro_length_input == "B":
-    user_pomodoro_length = 40 * 60
-elif user_pomodoro_length_input == "C":
-    user_pomodoro_length = 50 * 60
-else:
-    print("Invalid input. Please choose A, B or C.")
+def get_pomodoro_length():
+    while True:
+        print("Please Choose A Length For Your Pomodoros:")
+        print("")
+        print("A. 25 Minutes")
+        print("B. 40 Minutes")
+        print("C. 50 Minutes")
+        print("")
 
-if user_break_length_input == "A":
-    user_break_length = 5 * 60
-elif user_break_length_input == "B":
-    user_break_length = 10 * 60
-elif user_break_length_input == "C":
-    user_break_length = 15 * 60
-else:
-    print("Invalid input. Please choose A, B or C.")
+        user_pomodoro_length_input = input("Type A, B or C: ")
+
+        if user_pomodoro_length_input == "A":
+            return 25 * 60
+        elif user_pomodoro_length_input == "B":
+            return 40 * 60
+        elif user_pomodoro_length_input == "C":
+            return 50 * 60
+        else:
+            print("\033[91m" + "Invalid input. Please choose A, B or C." + "\033[0m")
+            print("-------------------------")
+
+
+def get_break_length():
+    while True:
+        print("-------------------------")
+        print("Please Choose A Length For Your Breaks:")
+        print("")
+        print("A. 5 Minutes")
+        print("B. 10 Minutes")
+        print("C. 15 Minutes")
+        print("")
+        user_break_length_input = input("Type A, B or C: ")
+
+        if user_break_length_input == "A":
+            return 5 * 60
+        elif user_break_length_input == "B":
+            return 10 * 60
+        elif user_break_length_input == "C":
+            return 15 * 60
+        else:
+            print("\033[91m" + "Invalid input. Please choose A, B or C." + "\033[0m")
+
 
 while True:
     time_elapsed = 0
+    user_pomodoro_length = get_pomodoro_length()
+    user_break_length = get_break_length()
 
     print(CLEAR)
     while time_elapsed < user_pomodoro_length:
